@@ -2,27 +2,22 @@
 
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-16 items-center">
 
-            <!-- Logo -->
-            <div class="flex-shrink-0 flex items-center">
-                <a href="{{ route('dashboard') }}">
-                    <x-application-logo class="block h-10 w-auto" />
-                </a>
-            </div>
+            <div class="ml-4 text-xl font-bold">🎬Sistema de gestión de cine</div>
 
             <!-- Menú principal -->
             <div class="hidden sm:flex sm:space-x-8 sm:ml-10">
 
                 <!-- Dashboard -->
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    Dashboard
+                    Inicio
                 </x-nav-link>
 
                 <!-- Actores ▼ -->
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none">
-                        Actoreak
+                        Actores
                         <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.396a.75.75 0 111.02 1.1l-4.25 3.895a.75.75 0 01-1.02 0L5.25 8.29a.75.75 0 01-.02-1.08z" clip-rule="evenodd" />
                         </svg>
@@ -39,7 +34,7 @@
                 <!-- Directores ▼ -->
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none">
-                        Zuzendariak
+                        Directores
                         <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.396a.75.75 0 111.02 1.1l-4.25 3.895a.75.75 0 01-1.02 0L5.25 8.29a.75.75 0 01-.02-1.08z" clip-rule="evenodd" />
                         </svg>
@@ -56,7 +51,7 @@
                 <!-- Películas ▼ -->
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none">
-                        Filmak
+                        Peliculas
                         <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.396a.75.75 0 111.02 1.1l-4.25 3.895a.75.75 0 01-1.02 0L5.25 8.29a.75.75 0 01-.02-1.08z" clip-rule="evenodd" />
                         </svg>
@@ -92,7 +87,7 @@
                             @csrf
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault(); this.closest('form').submit();">
-                                Logout
+                                Cerrar sesión
                             </x-dropdown-link>
                         </form>
                     </x-slot>

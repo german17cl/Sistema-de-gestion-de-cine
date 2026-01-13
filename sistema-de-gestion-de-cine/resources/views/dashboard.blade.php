@@ -4,51 +4,57 @@
 
             <!-- Bienvenida -->
             <h1 class="text-2xl font-bold mb-6">
-                Kaixo, {{ Auth::user()->name }} 👋  
+                Hola, {{ Auth::user()->name }} 👋  
                 <br>
-                Ongi etorri Zinema Kudeatzeko Sistemara
+                Bienvenido al Sistema de Gestión de Cine
             </h1>
 
             <!-- Tarjetas -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
 
                 <!-- Actores -->
-                <div class="bg-white p-6 rounded shadow">
-                    <h2 class="text-xl">🎭 Actoreak</h2>
-                    <p class="mt-2">Guztira: {{ $actorsCount }} aktore</p>
-                    <a href="{{ route('actors.index') }}" class="text-blue-600">
-                        Ikusi guztiak
+                <div class="bg-white p-6 rounded shadow flex flex-col">
+                    <h2 class="text-4xl">🎭 </h2>
+                    <h2 class="text-xl">Actores </h2>
+                    <p class="mt-2">Total: {{ $actorsCount }} actores</p>
+                    <a class="rounded bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 mt-2 w-1/2" href="{{ route('actors.index') }}" class="text-blue-600">
+                        Ver todo
                     </a>
                 </div>
 
                 <!-- Directores -->
-                <div class="bg-white p-6 rounded shadow">
-                    <h2 class="text-xl">🎬 Zuzendariak</h2>
-                    <p class="mt-2">Guztira: {{ $directorsCount }} zuzendari</p>
-                    <a href="{{ route('directors.index') }}" class="text-blue-600">
-                        Ikusi guztiak
+                <div class="bg-white p-6 rounded shadow flex flex-col">
+                    <h2 class="text-4xl">🎬 </h2>
+                    <h2 class="text-xl">Directores</h2>
+                    <p class="mt-2">Total: {{ $directorsCount }} directores</p>
+                    <a class="rounded bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 mt-2 w-1/2" href="{{ route('directors.index') }}" class="text-blue-600">
+                        Ver todo
                     </a>
                 </div>
 
                 <!-- Películas -->
-                <div class="bg-white p-6 rounded shadow">
-                    <h2 class="text-xl">🎥 Filmak</h2>
-                    <p class="mt-2">Guztira: {{ $moviesCount }} film</p>
-                    <a href="{{ route('movies.index') }}" class="text-blue-600">
-                        Ikusi guztiak
+                <div class="bg-white p-6 rounded shadow flex flex-col">
+                    <h2 class="text-4xl">🎥 </h2>
+                    <h2 class="text-xl">Películas</h2>
+                    <p class="mt-2">Total: {{ $moviesCount }} películas</p>
+                    <a class="rounded bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 mt-2 w-1/2" href="{{ route('movies.index') }}" class="text-blue-600">
+                        Ver todo
                     </a>
                 </div>
 
                 <!-- Último estreno -->
-                <div class="bg-white p-6 rounded shadow">
-                    <h2 class="text-xl">⭐ Azken estreinaldia</h2>
+                <div class="bg-white p-6 rounded shadow flex flex-col">
+                    <h2 class="text-4xl">⭐</h2>
+                    <h2 class="text-xl">Último lanzamiento</h2>
+
+                    
                     @if($latestMovie)
                         <p class="mt-2">{{ $latestMovie->title }}</p>
-                        <a href="{{ route('movies.show', $latestMovie) }}" class="text-blue-600">
-                            Xehetasunak
+                        <a class="rounded bg-blue-500 text-white px-4 py-2 hover:bg-blue-600 mt-2 w-1/2" href="{{ route('movies.show', $latestMovie) }}" class="text-blue-600">
+                            Detalles
                         </a>
                     @else
-                        <p>Ez dago filmik</p>
+                        <p>No hay películas.</p>
                     @endif
                 </div>
 
@@ -56,7 +62,7 @@
 
             <!-- Timeline -->
             <div class="bg-white p-6 rounded shadow">
-                <h2 class="text-xl mb-4">🕒 Azken filmak</h2>
+                <h2 class="text-xl mb-4">🕒 Últimas películas</h2>
                 <ul>
                     @foreach($latestMovies as $movie)
                         <li class="border-b py-2">
