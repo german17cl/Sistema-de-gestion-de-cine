@@ -14,8 +14,12 @@ class DashboardController extends Controller
             'actorsCount' => Actor::count(),
             'directorsCount' => Director::count(),
             'moviesCount' => Movie::count(),
-            'latestMovie' => Movie::orderBy('anio', 'desc')->first(),
-            'latestMovies' => Movie::latest()->take(5)->get(),
+
+            // Última película por fecha de estreno
+            'latestMovie' => Movie::orderBy('release_date', 'desc')->first(),
+
+            // Últimas 5 películas
+            'latestMovies' => Movie::orderBy('release_date', 'desc')->take(5)->get(),
         ]);
     }
 }

@@ -10,12 +10,15 @@ class Movie extends Model
     use HasFactory;
 
     protected $fillable = [
-        'titulo',
-        'anio',
-        'duracion',
-        'sinopsis',
+        'title',
+        'description',
+        'release_date',
+        'duration',
+        'genre',
+        'poster',
         'director_id',
     ];
+
 
     public function director()
     {
@@ -25,7 +28,7 @@ class Movie extends Model
     public function actors()
     {
         return $this->belongsToMany(Actor::class)
-                    ->withPivot('rol')
-                    ->withTimestamps();
+            ->withPivot('role')
+            ->withTimestamps();
     }
 }

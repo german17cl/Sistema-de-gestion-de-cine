@@ -3,17 +3,22 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Director;
 
 class MovieFactory extends Factory
 {
-    public function definition()
+    public function definition(): array
     {
         return [
-            'titulo' => fake()->sentence(3),
-            'anio' => fake()->year(),
-            'duracion' => fake()->numberBetween(80, 180),
-            'sinopsis' => fake()->paragraph(),
-            'director_id' => \App\Models\Director::factory(),
+            'title' => fake()->sentence(3),
+            'description' => fake()->paragraph(),
+            'release_date' => fake()->date(),
+            'duration' => fake()->numberBetween(80, 180),
+            'genre' => fake()->randomElement([
+                'Drama', 'Comedy', 'Action', 'Sci-Fi', 'Thriller'
+            ]),
+            'poster' => null,
+            'director_id' => Director::factory(),
         ];
     }
 }
