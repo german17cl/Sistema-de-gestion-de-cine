@@ -8,8 +8,9 @@ use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\MovieController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home'); // dashboard público
+})->name('home');
+
 
 Route::middleware('auth')->group(function () {
 
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
     // CRUD Películas
     Route::resource('movies', MovieController::class);
+
+    Route::get('/movies/{movie}/delete', [MovieController::class, 'delete'])
+        ->name('movies.delete');
 });
 
 require __DIR__.'/auth.php';

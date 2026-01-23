@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             foreach ($peliculas as $pelicula) {
                 $pelicula->actors()->attach(
                     $actores->random(3),
-                    ['rol' => 'Protagonista']
+                    ['role' => 'Protagonista']
                 );
             }
         }

@@ -68,7 +68,7 @@
                     <li class="border-b py-2">
                         
 
-                        <div class="flex">
+                        <div class="flex p-3 items-center gap-4 border rounded hover:bg-gray-50">
                             @if ($movie->poster)
                             <div class="flex items-center justify-center h-24 w-20 overflow-hidden rounded shadow">
                                 <img src="{{ asset('storage/' . $movie->poster) }}"
@@ -78,10 +78,19 @@
                             <div class="flex items-center justify-center h-24 w-20 bg-gray-200 rounded text-xs text-gray-500">
                                 N/A
                             </div>
-
-                            
                             @endif
-                            {{ $movie->title }} ({{ $movie->created_at->format('Y-m-d') }})
+                            <div class=" flex flex-col">
+                                <p class="font-bold text-xl">{{ $movie->title }} </p>
+                                <p class="text-gray-600">Director: {{ $movie->director->nombre }}</p>
+                                <p class="text-gray-600">Fecha de estreno: ({{ $movie->created_at->format('Y-m-d') }})</p>
+                                <p class="text-gray-600">Género: {{ $movie->genre }}</p>
+                                <div class="flex flex-row gap-4">
+                                    <a href="{{ route('movies.show', $movie) }}" class="text-purple-800 hover:underline mt-2">
+                                        Ver detalles
+                                    </a>
+                                    <a href="{{ route('movies.edit', $movie)}}" class="text-green-600 hover:underline mt-2"> Editar</a>
+                                </div>
+                            </div>
                         </div>
                     </li>
                     @endforeach
