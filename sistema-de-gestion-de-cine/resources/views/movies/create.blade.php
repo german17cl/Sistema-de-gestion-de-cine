@@ -27,9 +27,44 @@
                 <x-text-input id="duration" name="duration" type="number" class="mt-1 block w-full" value="{{ old('duration') }}" required />
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
 
-                <x-input-label for="genre" value="Género" class="mt-4"/>
-                <x-text-input id="genre" name="genre" type="text" class="mt-1 block w-full" value="{{ old('genre') }}" required />
+                <x-input-label for="genre" value="Género" class="mt-4" />
+                <select
+                    id="genre"
+                    name="genre"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                        focus:border-indigo-500 focus:ring-indigo-500"
+                    required
+                >
+                    <option value="">— Selecciona un género —</option>
+
+                    @php
+                        $genres = [
+                            'Acción',
+                            'Aventura',
+                            'Comedia',
+                            'Drama',
+                            'Ciencia ficción',
+                            'Fantasía',
+                            'Terror',
+                            'Suspenso',
+                            'Romance',
+                            'Animación',
+                            'Documental',
+                            'Crimen',
+                            'Musical',
+                        ];
+                    @endphp
+
+                    @foreach ($genres as $genre)
+                        <option value="{{ $genre }}"
+                            {{ old('genre') === $genre ? 'selected' : '' }}>
+                            {{ $genre }}
+                        </option>
+                    @endforeach
+                </select>
+
                 <x-input-error :messages="$errors->get('genre')" class="mt-2" />
+
 
                 <x-input-label for="poster" value="Poster" class="mt-4"/>
                 <x-text-input id="poster" name="poster" type="file" class="mt-1 block w-full" />

@@ -74,10 +74,41 @@
                 {{-- Género --}}
                 <div>
                     <label class="block font-medium">Género</label>
-                    <input type="text" name="genre"
-                        value="{{ old('genre', $movie->genre) }}"
-                        class="w-full border rounded px-3 py-2">
+
+                    <select
+                        name="genre"
+                        class="w-full border rounded px-3 py-2"
+                        required
+                    >
+                        @php
+                            $genres = [
+                                'Acción',
+                                'Aventura',
+                                'Comedia',
+                                'Drama',
+                                'Ciencia ficción',
+                                'Fantasía',
+                                'Terror',
+                                'Suspenso',
+                                'Romance',
+                                'Animación',
+                                'Documental',
+                                'Crimen',
+                                'Musical',
+                            ];
+                        @endphp
+
+                        <option value="">— Selecciona un género —</option>
+
+                        @foreach ($genres as $genre)
+                            <option value="{{ $genre }}"
+                                {{ old('genre', $movie->genre) === $genre ? 'selected' : '' }}>
+                                {{ $genre }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
+
 
                 {{-- Poster --}}
                 <div>

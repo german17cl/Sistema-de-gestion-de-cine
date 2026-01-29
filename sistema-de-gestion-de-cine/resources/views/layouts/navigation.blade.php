@@ -71,28 +71,40 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-2xl font-medium text-gray-500 hover:text-gray-700">
+                        <button class="flex items-center text-xl font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition">
                             <div>{{ Auth::user()->name }}</div>
+
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.396a.75.75 0 111.02 1.1l-4.25 3.895a.75.75 0 01-1.02 0L5.25 8.29a.75.75 0 01-.02-1.08z" clip-rule="evenodd" />
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.396a.75.75 0 111.02 1.1l-4.25 3.895a.75.75 0 01-1.02 0L5.25 8.29a.75.75 0 01-.02-1.08z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </div>
                         </button>
                     </x-slot>
 
                     <x-slot name="content">
+                        <!-- Perfil -->
+                        <x-dropdown-link :href="route('profile.edit')">
+                            👤 Perfil
+                        </x-dropdown-link>
+
+                        <!-- Divider -->
+                        <div class="border-t border-gray-200 my-1"></div>
+
                         <!-- Cerrar sesión -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault(); this.closest('form').submit();">
-                                Cerrar sesión
+                                🚪 Cerrar sesión
                             </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
             </div>
+
 
         </div>
     </div>
