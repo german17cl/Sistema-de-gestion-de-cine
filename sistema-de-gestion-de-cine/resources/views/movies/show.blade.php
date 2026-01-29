@@ -23,7 +23,7 @@
 
                 {{-- Info --}}
                 <div class="flex-1 space-y-3">
-                    <p><strong>Director:</strong> {{ $movie->director->nombre }}</p>
+                    <p><strong>Director:</strong> {{ $movie->director->name . ' ' . $movie->director->surname }}</p>
                     <p><strong>Género:</strong> {{ $movie->genre }}</p>
                     <p><strong>Duración:</strong> {{ $movie->duration }} min</p>
                     <p><strong>Estreno:</strong> {{ $movie->release_date }}</p>

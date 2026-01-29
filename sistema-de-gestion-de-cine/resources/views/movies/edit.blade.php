@@ -41,7 +41,7 @@
                         @foreach ($directors as $director)
                             <option value="{{ $director->id }}"
                                 @selected(old('director_id', $movie->director_id) == $director->id)>
-                                {{ $director->nombre }}
+                                {{ $director->name }}
                             </option>
                         @endforeach
                     </select>

@@ -9,13 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+     //id, name, surname, birth_date, nationality, biography, photo,
+    //timestamps
     public function up(): void
     {
         Schema::create('directors', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->string('nacionalidad')->nullable();
+            $table->string('name');
+            $table->string('surname');
+            $table->date('birth_date')->nullable();
+            $table->string('nationality')->nullable();
+            $table->text('biography')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
 

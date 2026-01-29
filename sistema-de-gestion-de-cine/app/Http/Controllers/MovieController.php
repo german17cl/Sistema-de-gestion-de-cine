@@ -19,10 +19,11 @@ class MovieController extends Controller
     {
         $movies = Movie::with('director')
             ->latest()
-            ->paginate(10); // 👈 10 por página
+            ->paginate(10);
 
         return view('movies.index', compact('movies'));
     }
+
 
     public function create()
     {

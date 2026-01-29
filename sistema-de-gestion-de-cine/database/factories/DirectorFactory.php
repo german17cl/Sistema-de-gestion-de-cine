@@ -8,10 +8,18 @@ class DirectorFactory extends Factory
 {
     public function definition()
     {
+        //id, name, surname, birth_date, nationality, biography, photo,
+        //timestamps
+
         return [
-            'nombre' => fake()->firstName(),
-            'apellido' => fake()->lastName(),
-            'nacionalidad' => fake()->country(),
+            'id' => fake()->unique()->randomNumber(),
+            'name' => fake()->firstName(),
+            'surname' => fake()->lastName(),
+            'birth_date' => fake()->date(),
+            'nationality' => fake()->country(),
+            'biography' => fake()->text(200),
+            'photo' => null,
         ];
+    
     }
 }

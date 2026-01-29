@@ -54,15 +54,15 @@
                         </h3>
 
                         <p class="text-sm text-gray-600">
-                            🎬 {{ $movie->director->nombre ?? '—' }}
+                            🎬 Director: {{ $movie->director->name . ' ' . $movie->director->surname ?? '—' }}
                         </p>
 
                         <p class="text-sm text-gray-500">
-                            📅 {{ \Carbon\Carbon::parse($movie->release_date)->year }}
+                            📅 Fecha de estreno:{{ \Carbon\Carbon::parse($movie->release_date)->format('Y-m-d') }}
                         </p>
 
                         <p class="text-xs text-gray-500">
-                            🎭 {{ $movie->genre }}
+                            🎭 Género: {{ $movie->genre }}
                         </p>
                     </div>
 

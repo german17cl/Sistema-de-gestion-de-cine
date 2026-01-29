@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Director extends Model
 {
     use HasFactory;
+    //id, name, surname, birth_date, nationality, biography, photo,
+    //timestamps
 
     protected $fillable = [
-        'nombre',
-        'apellido',
-        'nacionalidad',
+        'id',
+        'name',
+        'surname',
+        'birth_date',
+        'biography',
+        'photo',
+        'timestamps',
     ];
 
     public function movies()

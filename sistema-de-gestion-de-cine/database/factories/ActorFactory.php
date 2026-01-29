@@ -9,10 +9,13 @@ class ActorFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => fake()->firstName(),
-            'apellido' => fake()->lastName(),
-            'fecha_nacimiento' => fake()->date(),
-            'nacionalidad' => fake()->country(),
+            'id' => $this->faker->unique()->numberBetween(1, 1000),
+            'name' => $this->faker->firstName(),
+            'surname' => $this->faker->lastName(),
+            'birth_date' => $this->faker->date(),
+            'nationality' => $this->faker->country(),
+            'biography' => $this->faker->paragraph(),
+            'photo' => null,
         ];
     }
 }

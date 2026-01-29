@@ -81,8 +81,8 @@
                             @endif
                             <div class=" flex flex-col">
                                 <p class="font-bold text-xl">{{ $movie->title }} </p>
-                                <p class="text-gray-600">Director: {{ $movie->director->nombre }}</p>
-                                <p class="text-gray-600">Fecha de estreno: ({{ $movie->created_at->format('Y-m-d') }})</p>
+                                <p class="text-gray-600">Director: {{ $movie->director->name . ' ' . $movie->director->surname }}</p>
+                                <p class="text-gray-600">Fecha de estreno: ({{ $movie->release_date }})</p>
                                 <p class="text-gray-600">Género: {{ $movie->genre }}</p>
                                 <div class="flex flex-row gap-4">
                                     <a href="{{ route('movies.show', $movie) }}" class="text-purple-800 hover:underline mt-2">

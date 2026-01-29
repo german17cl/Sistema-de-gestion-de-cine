@@ -65,7 +65,6 @@
 
                 <x-input-error :messages="$errors->get('genre')" class="mt-2" />
 
-
                 <x-input-label for="poster" value="Poster" class="mt-4"/>
                 <x-text-input id="poster" name="poster" type="file" class="mt-1 block w-full" />
                 <x-input-error :messages="$errors->get('poster')" class="mt-2" />
@@ -73,7 +72,7 @@
                 <x-input-label for="director_id" value="Director" class="mt-4"/>
                 <select id="director_id" name="director_id" class="mt-1 block w-full border rounded p-2" required>
                     @foreach ($directors as $director)
-                        <option value="{{ $director->id }}">{{ $director->nombre }}</option>
+                        <option value="{{ $director->id }}">{{ $director->name }}</option>
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('director_id')" class="mt-2" />
@@ -81,7 +80,7 @@
                 <x-input-label for="actors" value="Actores" class="mt-4"/>
                 <select id="actors" name="actors[]" class="mt-1 block w-full border rounded p-2" multiple>
                     @foreach ($actors as $actor)
-                        <option value="{{ $actor->id }}">{{ $actor->nombre }}</option>
+                        <option value="{{ $actor->id }}">{{ $actor->name }}</option>
                     @endforeach
                 </select>
 

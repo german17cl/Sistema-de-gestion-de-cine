@@ -6,10 +6,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('home'); // dashboard público
-})->name('home');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::middleware('auth')->group(function () {
@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
 
     // CRUD Actores
     Route::resource('actors', ActorController::class);
+
+    Route::get('/actors/{actor}/delete', [ActorController::class, 'delete'])
+        ->name('actors.delete');
 
     // CRUD Directores
     Route::resource('directors', DirectorController::class);

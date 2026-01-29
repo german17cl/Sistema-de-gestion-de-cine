@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //id, name, surname, birth_date, nationality, biography, photo,
+    //timestamps
         Schema::create('actors', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->date('fecha_nacimiento')->nullable();
-            $table->string('nacionalidad')->nullable();
+            $table->string('name');
+            $table->string('surname');
+            $table->date('birth_date')->nullable();
+            $table->string('nationality')->nullable();
+            $table->text('biography')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
 

@@ -8,18 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Actor extends Model
 {
     use HasFactory;
-
+    //id, name, surname, birth_date, nationality, biography, photo,
+    //timestamps
     protected $fillable = [
-        'nombre',
-        'apellido',
-        'fecha_nacimiento',
-        'nacionalidad',
+        'id',
+        'name',
+        'surname',
+        'birth_date',
+        'nationality',
+        'biography',
+        'photo',
+        'timestamps',
     ];
 
     public function movies()
     {
         return $this->belongsToMany(Movie::class)
-                    ->withPivot('rol')
+                    ->withPivot('role')
                     ->withTimestamps();
     }
 }
