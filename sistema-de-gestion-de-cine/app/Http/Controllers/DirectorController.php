@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Director;
 use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class DirectorController extends Controller
 {

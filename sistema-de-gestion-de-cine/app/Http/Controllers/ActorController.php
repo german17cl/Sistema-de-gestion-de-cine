@@ -6,6 +6,7 @@ use App\Models\Actor;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\StoreActorRequest;
 
 class ActorController extends Controller
 {
@@ -30,16 +31,10 @@ class ActorController extends Controller
         return view('actors.create', compact('movies', 'actors'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreActorRequest $request): RedirectResponse
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'surname' => 'nullable|string|max:255',
-            'birth_date' => 'nullable|date',
-            'biography' => 'nullable|string',
-            'nationality' => 'nullable|string|max:100',
-            'photo' => 'nullable|image|max:2048',
-        ]);
+
+        $data = $request->validated();
 
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('actors', 'public');
