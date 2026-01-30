@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
     // CRUD Directores
     Route::resource('directors', DirectorController::class);
+    Route::get('/directors/{director}/delete', [DirectorController::class, 'delete'])
+        ->name('directors.delete');
 
     // CRUD Películas
     Route::resource('movies', MovieController::class);

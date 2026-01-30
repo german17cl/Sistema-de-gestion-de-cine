@@ -40,10 +40,16 @@ class DirectorController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
             'birth_date' => 'nullable|date',
             'nationality' => 'nullable|string|max:100',
             'biography' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('directors', 'public');
+        }
 
         Director::create($data);
 
@@ -51,6 +57,7 @@ class DirectorController extends Controller
             ->route('directors.index')
             ->with('success', 'Director creado correctamente');
     }
+
 
     /**
      * Ver detalle
@@ -77,10 +84,16 @@ class DirectorController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
             'birth_date' => 'nullable|date',
             'nationality' => 'nullable|string|max:100',
             'biography' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('directors', 'public');
+        }
 
         $director->update($data);
 
@@ -88,6 +101,7 @@ class DirectorController extends Controller
             ->route('directors.index')
             ->with('success', 'Director actualizado correctamente');
     }
+
 
     /**
      * Vista confirmar borrado
