@@ -17,13 +17,49 @@ class ActorController extends Controller
         $this->middleware('auth');
     }
 
+    // Mostrar el formulario de casting
+    public function casting(Actor $actor)
+    {
+        $movies = Movie::all(); // todas las películas disponibles
+        $actor->load('movies'); // carga las relaciones
+        return view('actors.casting', compact('actor', 'movies'));
+    }
+
+    // Guardar casting
+    public function storeCasting(Request $request, Actor $actor)
+    {
+        $request->validate([
+            'movies' => 'array',
+            'movies.*' => 'exists:movies,id',
+            'roles' => 'array',
+            'roles.*' => 'nullable|string|max:255',
+        ]);
+
+        $syncData = [];
+
+        if ($request->has('movies')) {
+            foreach ($request->movies as $movieId) {
+                $syncData[$movieId] = ['role' => $request->roles[$movieId] ?? null];
+            }
+        }
+
+        // Guardar las relaciones en la tabla pivote
+        $actor->movies()->sync($syncData);
+
+        return redirect()->route('actors.casting', $actor)
+            ->with('success', 'Casting actualizado correctamente');
+    }
+
+
+
+
     public function index()
     {
         $actors = Actor::latest()->paginate(10);
         return view('actors.index', compact('actors'));
     }
 
-        public function create()
+    public function create()
     {
         $movies = Movie::all();
         $actors = Actor::all();
@@ -58,7 +94,7 @@ class ActorController extends Controller
     {
         return view('actors.edit', compact('actor'));
     }
-    
+
     public function update(Request $request, Actor $actor)
     {
         $data = $request->validate([
@@ -74,7 +110,7 @@ class ActorController extends Controller
             'timestamps' => 'nullable',
         ]);
 
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('actors', 'public');
         }
 

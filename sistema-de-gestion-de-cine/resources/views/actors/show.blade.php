@@ -50,9 +50,16 @@
                         </a>
 
                         
-                        <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        <a href="{{ route('actors.casting', $actor) }}"
+                        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                             🎭 Ver Casting
                         </a>
+
+                        <p class="text-xs text-gray-500">
+                            🎭 Rol: {{ $movie->pivot->role ?? '—' }}
+                        </p>
+
+
                     </div>
                 </div>
             </div>

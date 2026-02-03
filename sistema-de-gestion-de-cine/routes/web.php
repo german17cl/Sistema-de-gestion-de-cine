@@ -32,6 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/actors/{actor}/delete', [ActorController::class, 'delete'])
         ->name('actors.delete');
 
+    Route::get('/actors/{actor}/casting', [ActorController::class, 'casting'])
+    ->name('actors.casting');
+
+    Route::post('/actors/{actor}/casting', [ActorController::class, 'storeCasting'])
+    ->name('actors.casting.store');
+
+
     // CRUD Directores
     Route::resource('directors', DirectorController::class);
     Route::get('/directors/{director}/delete', [DirectorController::class, 'delete'])
